@@ -2,16 +2,16 @@ import {test, expect} from '@playwright/test'
 import path from 'path'
 
 
-test('upload a file',async ({page}) => {
+test.only('upload a file',async ({page}) => {
     await page.goto("https://the-internet.herokuapp.com/upload")
 
-    await page.locator("#file-upload").locator("input[type='file']").setInputFiles([path.join(__dirname,"feb2024.jpeg)]")])
+    await page.locator("#file-upload").locator("input[type='file']").setInputFiles([path.join(__dirname, "feb2024.jpeg")])
     
     await expect(page.locator("#uploaded-files")).toContainText("feb2024")
 }
 )
 
-test.only('Dwld a targetFile',async ({page}) => {
+test('Dwld a targetFile',async ({page}) => {
 
     await page.goto("https://the-internet.herokuapp.com/download") 
     const fileDw01 = page.waitForEvent('download')
